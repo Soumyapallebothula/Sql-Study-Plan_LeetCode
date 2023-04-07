@@ -1,0 +1,19 @@
+1. Calculate Special Bonus - https://leetcode.com/problems/calculate-special-bonus/?envType=study-plan&id=sql-i
+
+select employee_id, 
+if(employee_id%2=1 and name not like 'M%' , salary  ,0) as bonus
+from Employees
+order by employee_id
+
+
+2. Swap Salary - https://leetcode.com/problems/swap-salary/?envType=study-plan&id=sql-i
+
+Update Salary 
+set sex = if(sex = 'f','m','f');
+
+
+3. Delete Duplicate Emails - https://leetcode.com/problems/delete-duplicate-emails/?envType=study-plan&id=sql-i
+
+DELETE p2 FROM Person p1 JOIN Person p2 ON p1.Email = p2.Email AND p1.Id < p2.Id;
+
+
