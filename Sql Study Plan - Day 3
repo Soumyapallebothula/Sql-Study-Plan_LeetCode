@@ -1,0 +1,21 @@
+1.Fix Names in a Table - 
+https://leetcode.com/problems/fix-names-in-a-table/?envType=study-plan&id=sql-i
+
+SELECT user_id, concat(upper(LEFT(name, 1)), lower(RIGHT(name, length(name)-1))) as name
+FROM users
+ORDER BY user_id;
+
+2.Group Sold Products By The Date -
+https://leetcode.com/problems/group-sold-products-by-the-date/?envType=study-plan&id=sql-i
+
+SELECT sell_date,
+		COUNT(DISTINCT(product)) AS num_sold, 
+		GROUP_CONCAT(DISTINCT product ORDER BY product ASC SEPARATOR ',') AS products
+FROM Activities
+GROUP BY sell_date
+ORDER BY sell_date ASC
+
+3.Patients With a Condition -
+https://leetcode.com/problems/delete-duplicate-emails/?envType=study-plan&id=sql-i
+
+SELECT * FROM patients WHERE conditions REGEXP '\\bDIAB1'
