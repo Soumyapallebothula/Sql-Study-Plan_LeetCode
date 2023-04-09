@@ -1,1 +1,35 @@
+1. Employees With Missing Information - https://leetcode.com/problems/employees-with-missing-information/?envType=study-plan&id=sql-i
+
+select t.employee_id  from (
+select * from Employees e left join Salaries s using (employee_id)
+union
+select *from Employees e right join Salaries s using (employee_id)
+) as t
+where t.name is null or t.salary is null
+order by t.employee_id asc;
+
+
+2. Rearrange Products Table - https://leetcode.com/problems/rearrange-products-table/?envType=study-plan&id=sql-i
+
+select product_id,'store1' as store ,store1 as price from products where store1 is not null 
+union
+select product_id,'store2' as store, store2 as price from products where store2 is not null 
+union
+select product_id,'store3' as store, store3 as price from products where store3 is not null 
+
+
+3. Tree Node - https://leetcode.com/problems/tree-node/?envType=study-plan&id=sql-i
+
+select id , 
+case when p_id is null then 'Root'
+     when p_id is not null and id in (select distinct p_id from Tree) then 'Inner'
+     else 'Leaf'
+     end as type 
+     from Tree;
+
+
+4. Second Highest Salary - https://leetcode.com/problems/second-highest-salary/?envType=study-plan&id=sql-i
+
+select max(salary) as SecondHighestSalary from Employee where salary not in (select max(salary) from employee)
+
 
