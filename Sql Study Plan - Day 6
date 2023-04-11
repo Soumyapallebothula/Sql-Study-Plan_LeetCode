@@ -1,0 +1,28 @@
+1.Rising Temperature - https://leetcode.com/problems/rising-temperature/?envType=study-plan&id=sql-i
+
+#1
+SELECT *
+FROM Weather w1
+JOIN Weather w2 ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
+
+#2
+select w1.id from weather as w1 ,weather w2
+where w1.temperature > w2.temperature 
+and
+datediff(w1.recordDate,w2.recordDate)=1;
+
+2.Sales Person - https://leetcode.com/problems/sales-person/?envType=study-plan&id=sql-i
+
+#1
+SELECT name from salesperson
+where sales_id not in 
+(
+    select sales_id from orders where com_id in 
+	(select com_id from company where name='RED')
+)
+
+#2
+select s.name
+from orders o join company c on (o.com_id = c.com_id and c.name = 'RED')
+right join salesperson s on s.sales_id = o.sales_id
+where o.sales_id is null
