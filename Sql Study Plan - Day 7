@@ -1,0 +1,21 @@
+1.User Activity for the Past 30 Days I - https://leetcode.com/problems/user-activity-for-the-past-30-days-i/
+
+Solution :
+select activity_date as day , count(distinct user_id) as active_users from Activity 
+where  activity_date  > '2019-06-27' and activity_date <='2019-07-27'
+group by activity_date 
+
+
+2. Daily Leads and Partners - https://leetcode.com/problems/daily-leads-and-partners/
+
+Solution:
+SELECT date_id, make_name, COUNT(DISTINCT lead_id) AS unique_leads, COUNT(DISTINCT partner_id) AS unique_partners
+FROM DailySales
+GROUP BY date_id , make_name
+
+3. Find Followers Count - https://leetcode.com/problems/find-followers-count/
+
+Solution:
+select user_id , count(follower_id) as followers_count from Followers
+group by user_id
+order by user_id asc;
