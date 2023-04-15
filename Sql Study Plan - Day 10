@@ -1,0 +1,20 @@
+Duplicate Emails - https://leetcode.com/problems/duplicate-emails/?envType=study-plan&id=sql-i
+
+select distinct Email from Person p1 join Person p2 using (email) where p1.id<>p2.id
+
+
+Actors and Directors Who Cooperated At Least Three Times - https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/?envType=study-plan&id=sql-i
+
+select actor_id,director_id from ActorDirector group by actor_id, director_id having count(timestamp)>=3
+
+
+Bank Account Summary II - https://leetcode.com/problems/bank-account-summary-ii/?envType=study-plan&id=sql-i
+
+select u.name , sum(t.amount) as balance from users u join transactions t on u.account = t.account group by t.account having sum(t.amount)>10000;
+
+
+Sales Analysis III - https://leetcode.com/problems/sales-analysis-iii/?envType=study-plan&id=sql-i
+
+select p.product_id , p.product_name from Product p inner join Sales s on p.product_id = s.product_id
+GROUP BY s.product_id 
+HAVING MIN(s.sale_date) >= "2019-01-01" AND MAX(s.sale_date) <= "2019-03-31";
